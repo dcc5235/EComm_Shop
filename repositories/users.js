@@ -14,10 +14,21 @@ class UsersRepository {
   }
 }
 
-  async checkForFile() {
+  async getAll() {
+    // oprn the file that this.filename is pointing to
+    const contents = await fs.promises.readFile(this.filename, { encoding: 'utf8'});
+    // read its contents
+    console.log(contents);
+    // parse the contents
 
+    // return the parsed data
   }
 }
 
-const repo = new UsersRepository('users.json');
-repo.checkForFile();
+const test = async () => {
+  const repo = new UsersRepository('users.json');
+
+  await repo.getAll();
+};
+
+test();
