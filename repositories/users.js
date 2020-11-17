@@ -15,20 +15,20 @@ class UsersRepository {
 }
 
   async getAll() {
-    // oprn the file that this.filename is pointing to
-    const contents = await fs.promises.readFile(this.filename, { encoding: 'utf8'});
+    // open the file that this.filename is pointing to
     // read its contents
-    console.log(contents);
     // parse the contents
-
     // return the parsed data
+    return JSON.parse(await fs.promises.readFile(this.filename, { encoding: 'utf8'}));
   }
 }
 
 const test = async () => {
   const repo = new UsersRepository('users.json');
 
-  await repo.getAll();
+  const users = await repo.getAll();
+
+  console.log(users);
 };
 
 test();
