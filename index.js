@@ -14,22 +14,22 @@ app.use(cookieSession({
 app.get('/signup', (req, res) => {
   res.send(`
     <div>
-      Your ID is: ${req.session.userId}
+      Your id is: ${req.session.userId}
       <form method="POST">
         <input name="email" placeholder="email" />
         <input name="password" placeholder="password" />
         <input name="passwordConfirmation" placeholder="password confirmation" />
-        <button> Sign Up</button>
+        <button>Sign Up</button>
       </form>
     </div>
-  `); 
+  `);
 });
 
 // Middleware Global
 app.post('/signup', async (req, res) => {
-  const { email, password, passwordConfirmation} = req.body;
+  const { email, password, passwordConfirmation } = req.body;
 
-  const existingUser = await usersRepo.getOneBy({ email});
+  const existingUser = await usersRepo.getOneBy({ email });
   if (existingUser) {
     return res.send('Email in use');
   }
@@ -38,12 +38,13 @@ app.post('/signup', async (req, res) => {
     return res.send('Passwords must match');
   }
 
-  // Create a user in our user repo to rep a person
-  const user = await usersRepo.create ({ email, password });
-  // Store user ID inside the users cookie
-  req.session.userId = user.id; 
+  // Create a user in our user repo to represent this person
+  const user = await usersRepo.create({ email, password });
 
-  res.send('Account created!');
+  // Store the id of that user inside the users cookie
+  req.session.userId = user.id;
+
+  res.send('Account created!!!');
 });
 
 app.get('/signout', (req, res) => {
@@ -53,14 +54,13 @@ app.get('/signout', (req, res) => {
 
 app.get('/signin', (req, res) => {
   res.send(`
-  <div>
-    <form method="POST">
-      <input name="email" placeholder="email" />
-      <input name="password" placeholder="password" />
-      <input name="passwordConfirmation" placeholder="password confirmation" />
-      <button> Sign In</button>
-    </form>
-  </div>
+    <div>
+      <form method="POST">
+        <input name="email" placeholder="email" />
+        <input name="password" placeholder="password" />
+        <button>Sign In</button>
+      </form>
+    </div>
   `);
 });
 
@@ -73,13 +73,17 @@ app.post('/signin', async (req, res) => {
     return res.send('Email not found');
   }
 
-  if (user.password !== password) {
+  const validPassword = await usersRepo.comparePasswords(
+    user.password, 
+    password
+  );
+  if (!validPassword) {
     return res.send('Invalid password');
   }
 
   req.session.userId = user.id;
 
-  res.send('You are signed in!');
+  res.send('You are signed in!!!');
 });
 
 app.listen(3000, () => {
