@@ -51,7 +51,7 @@ app.get('/signout', (req, res) => {
   res.send('You are logged out');
 });
 
-app.get('signin', (req, res) => {
+app.get('/signin', (req, res) => {
   res.send(`
   <div>
     <form method="POST">
