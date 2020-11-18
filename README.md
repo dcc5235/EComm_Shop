@@ -20,3 +20,5 @@ delete | id | null | delete the user with the given id
 randomId | - | id | generates a random id
 writeAll | - | null | writes all user to a user.json file
 
+## Requirements for SignUp & SignIn
+- Hashing and salting passwords for user security to prevent [rainbox table attacks](https://bit.ly/3lIGyXn)
