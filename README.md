@@ -21,4 +21,6 @@ randomId | - | id | generates a random id
 writeAll | - | null | writes all user to a user.json file
 
 ## Requirements for SignUp & SignIn
-- Hashing and salting passwords for user security to prevent [rainbox table attacks](https://bit.ly/3lIGyXn)
+- Hashing and salting passwords for user security to prevent [rainbow table attacks](https://bit.ly/3lIGyXn)
+- Password validator & sanitization with [npm express-validator library](https://www.npmjs.com/package/express-validator)
+ 
