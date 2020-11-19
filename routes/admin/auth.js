@@ -1,7 +1,10 @@
+const express = require('express');
 const usersRepo = require('../../repositories/users');
 
+const router = express.Router();
+
 // Route Handler
-app.get('/signup', (req, res) => {
+router.get('/signup', (req, res) => {
   res.send(`
     <div>
       Your id is: ${req.session.userId}
@@ -16,7 +19,7 @@ app.get('/signup', (req, res) => {
 });
 
 // Middleware Global
-app.post('/signup', async (req, res) => {
+router.post('/signup', async (req, res) => {
   const { email, password, passwordConfirmation } = req.body;
 
   const existingUser = await usersRepo.getOneBy({ email });
@@ -37,12 +40,12 @@ app.post('/signup', async (req, res) => {
   res.send('Account created!!!');
 });
 
-app.get('/signout', (req, res) => {
+router.get('/signout', (req, res) => {
   req.session = null;
   res.send('You are logged out');
 });
 
-app.get('/signin', (req, res) => {
+router.get('/signin', (req, res) => {
   res.send(`
     <div>
       <form method="POST">
@@ -54,7 +57,7 @@ app.get('/signin', (req, res) => {
   `);
 });
 
-app.post('/signin', async (req, res) => {
+router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
 
   const user = await usersRepo.getOneBy({ email });
@@ -75,3 +78,5 @@ app.post('/signin', async (req, res) => {
 
   res.send('You are signed in!!!');
 });
+
+module.exports = router;
