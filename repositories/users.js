@@ -13,18 +13,14 @@ class UsersRepository {
     this.filename = filename;
     try {
       fs.accessSync(this.filename);
-  } catch (err){
-    fs.writeFileSync(this.filename, '[]');
+    } catch (err) {
+      fs.writeFileSync(this.filename, '[]');
+    }
   }
-}
 
   async getAll() {
-    // open the file that this.filename is pointing to
-    // read its contents
-    // parse the contents
-    // return the parsed data
-    return JSON.parse
-      (await fs.promises.readFile(this.filename, { 
+    return JSON.parse(
+      await fs.promises.readFile(this.filename, {
         encoding: 'utf8'
       })
     );
@@ -46,17 +42,22 @@ class UsersRepository {
     await this.writeAll(records);
 
     return record;
-  } 
+  }
 
   async comparePasswords(saved, supplied) {
-   const [hashed, salt] = saved.split('.');
-   const hashSuppliedBuf = await scrypt(suppliedBuf, salt, 64);
+    // Saved -> password saved in our database. 'hashed.salt'
+    // Supplied -> password given to us by a user trying sign in
+    const [hashed, salt] = saved.split('.');
+    const hashedSuppliedBuf = await scrypt(supplied, salt, 64);
 
-   return hashed === hashSuppliedBuf.toString('hex');
+    return hashed === hashedSuppliedBuf.toString('hex');
   }
 
   async writeAll(records) {
-    await fs.promises.writeFile(this.filename, JSON.stringify(records, null, 2));
+    await fs.promises.writeFile(
+      this.filename,
+      JSON.stringify(records, null, 2)
+    );
   }
 
   randomId() {
@@ -65,7 +66,7 @@ class UsersRepository {
 
   async getOne(id) {
     const records = await this.getAll();
-    return records.find(records => records.id === id);
+    return records.find(record => record.id === id);
   }
 
   async delete(id) {
@@ -79,7 +80,7 @@ class UsersRepository {
     const record = records.find(record => record.id === id);
 
     if (!record) {
-      throw new Error(`record with id ${id} not found`);
+      throw new Error(`Record with id ${id} not found`);
     }
 
     Object.assign(record, attrs);
@@ -89,11 +90,9 @@ class UsersRepository {
   async getOneBy(filters) {
     const records = await this.getAll();
 
-    // iterate through an array
     for (let record of records) {
       let found = true;
 
-      // iterate through an object
       for (let key in filters) {
         if (record[key] !== filters[key]) {
           found = false;
@@ -102,9 +101,9 @@ class UsersRepository {
 
       if (found) {
         return record;
-      } 
+      }
     }
   }
 }
 
-module.exports = new UsersRepository('user.json');
+module.exports = new UsersRepository('users.json');
