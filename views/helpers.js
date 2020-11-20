@@ -1,7 +1,7 @@
 module.exports = {
   getError(errors, prop) {
     try {
-      return errors.mapped()[pop].msg;
+      return errors.mapped()[prop].msg;
     } catch (err) {
       return '';
     }
