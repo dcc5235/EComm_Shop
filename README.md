@@ -8,7 +8,7 @@ work in progress.
   - express helps run web server
   - nodemon auto restarts web server when project file changes
 
-## UsersRepository
+## Users Repository
 Method | Input Args | Return | Description
 ------------ | ------------- | ------------- | ------------- 
 getAll | - | [user] | gets a list of all users
@@ -19,6 +19,10 @@ update | id, attributes | null | updates user with given id usin gthe given attr
 delete | id | null | delete the user with the given id
 randomId | - | id | generates a random id
 writeAll | - | null | writes all user to a user.json file
+comparePasswords | string, string | boolean | returns true if the passwords match
+
+## Products Repository
+Code reuse with classes - see repository.js
 
 ## Requirements for SignUp & SignIn
 - Hashing and salting passwords for user security to prevent [rainbow table attacks](https://bit.ly/3lIGyXn)
