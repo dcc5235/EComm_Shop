@@ -27,4 +27,11 @@ Code reuse with classes - see repository.js
 ## Requirements for SignUp & SignIn
 - Hashing and salting passwords for user security to prevent [rainbow table attacks](https://bit.ly/3lIGyXn)
 - Password validator & sanitization with [npm express-validator library](https://www.npmjs.com/package/express-validator)
+
+Image and upload file
+
+Shopping cart
+
+Testing
  
+Framework 
