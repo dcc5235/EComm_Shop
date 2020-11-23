@@ -16,9 +16,9 @@ router.get('/admin/products/new', (req, res) => {
 });
 
 router.post(
-  '/admin/products/new', 
+  '/admin/products/new',
   upload.single('image'), // Middleware submits in specific order to function
-  [requireTitle, requirePrice], 
+  [requireTitle, requirePrice],
   async (req, res) => {
     const errors = validationResult(req);
 
@@ -31,7 +31,6 @@ router.post(
     await productsRepo.create({ title, price, image });
 
     res.send('submitted');
-
   }
 );
 
