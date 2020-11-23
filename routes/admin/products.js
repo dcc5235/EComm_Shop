@@ -1,7 +1,7 @@
 const express = require('express');
-const { validationResult } = require('express-validator');
 const multer = require('multer');
 
+const { handleErrors } = require('./middlewares');
 const productsRepo = require('../../repositories/products');
 const productsNewTemplate = require('../../views/admin/products/new');
 const { requireTitle, requirePrice } = require('./validators');
@@ -16,22 +16,16 @@ router.get('/admin/products/new', (req, res) => {
 });
 
 router.post(
-  '/admin/products/new', 
+  '/admin/products/new',
   upload.single('image'), // Middleware submits in specific order to function
-  [requireTitle, requirePrice], 
+  [requireTitle, requirePrice],
+  handleErrors(productsNewTemplate), 
   async (req, res) => {
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-      return res.send(productsNewTemplate({ errors }));
-    }
-
     const image = req.file.buffer.toString('base64'); // represent an image in a string format
     const { title, price } = req.body;
     await productsRepo.create({ title, price, image });
 
     res.send('submitted');
-
   }
 );
 
