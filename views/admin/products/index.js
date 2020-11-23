@@ -15,7 +15,7 @@ module.exports = ({ products }) => {
           </a>
         </td>
         <td>
-          <button class="button is-danger">Delete</button>
+          <button class="button is-danger" href="">Delete</button>
         </td>
       </tr>
     `;
