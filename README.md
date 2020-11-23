@@ -1,5 +1,8 @@
-# Ecommerce
-work in progress. 
+# WORK IN PROGRESS
+
+# E-commerce Site  ![GitHub version doc](https://img.shields.io/badge/Version-1.0.0-red) ![GitHub last commit](https://img.shields.io/github/last-commit/dcc5235/Ecommerce?style=flat-square) 
+
+**HTML5, Bulma CSS, JavaScript**
 
 ## Installations & Considerations
 
@@ -28,7 +31,9 @@ Code reuse with classes - see repository.js
 - Hashing and salting passwords for user security to prevent [rainbow table attacks](https://bit.ly/3lIGyXn)
 - Password validator & sanitization with [npm express-validator library](https://www.npmjs.com/package/express-validator)
 
-Image and upload file
+## Image and upload file
+- middleware [multer](https://www.npmjs.com/package/multer) installation (accessing uploaded files)
+  - <code> npm install multer</code> in the command line
 
 Shopping cart
 
