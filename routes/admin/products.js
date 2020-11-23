@@ -15,12 +15,24 @@ router.get('/admin/products/new', (req, res) => {
   res.send(productsNewTemplate({}));
 });
 
-router.post('/admin/products/new', [requireTitle, requirePrice], upload.single('image'), (req, res) => {
-  const errors = validationResult(req);
+router.post(
+  '/admin/products/new', 
+  upload.single('image'), // Middleware submits in specific order to function
+  [requireTitle, requirePrice], 
+  async (req, res) => {
+    const errors = validationResult(req);
 
-  console.log(req.file);
+    if (!errors.isEmpty()) {
+      return res.send(productsNewTemplate({ errors }));
+    }
 
-  res.send('submitted');
-});
+    const image = req.file.buffer.toString('base64'); // represent an image in a string format
+    const { title, price } = req.body;
+    await productsRepo.create({ title, price, image });
+
+    res.send('submitted');
+
+  }
+);
 
 module.exports = router;
