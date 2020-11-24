@@ -10,7 +10,7 @@ router.post('/cart/products', (req, res) => {
     const cart = await cartsRepo.create({ items: [] });
     req.session.cartId = cart.id;
   } else {
-
+    const cart = await cartsRepo.getOne(req.session.cartId);
   }
 
   res.send('Product added to cart');
