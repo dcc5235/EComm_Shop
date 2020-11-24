@@ -14,7 +14,14 @@ router.post('/cart/products', async (req, res) => {
     cart = await cartsRepo.getOne(req.session.cartId);
   }
 
-  console.log(cart);
+  const existingItem = cart.items.find(item => item.id === req.body.productId);
+  if (existingItem) {
+    existingItem.quantity++;
+  } else {
+
+  }
+
+
   res.send('Product added to cart');
 });
 
