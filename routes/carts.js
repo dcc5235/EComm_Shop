@@ -28,7 +28,13 @@ router.post('/cart/products', async (req, res) => {
 });
 
 // rcv a GET request to show all items in cart
+router.get('/cart', async (req, res) => {
+  if (!req.session.cartId) {
+    return res.redirect('/');
+  }
 
+  const cart = await cartsRepo.getOne(req.session.cartId);
+});
 
 // rcv post request to delete item from cart
 
