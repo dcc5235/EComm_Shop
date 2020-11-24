@@ -38,7 +38,11 @@ router.get('/cart', async (req, res) => {
 
   for (let item of cart.items) {
     const product = await productsRepo.getOne(item.id);
+
+    item.product = product;
   }
+
+  res.send(cartShowTemplate({ items: cart.items }));
 });
 
 // rcv post request to delete item from cart
