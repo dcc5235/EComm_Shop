@@ -20,7 +20,9 @@ router.post('/cart/products', async (req, res) => {
   } else {
     cart.items.push({ id: req.body.productId, quantity: 1 });
   }
-
+  await cartsRepo.update(cart.id, {
+    items: cart.items
+  });
 
   res.send('Product added to cart');
 });
