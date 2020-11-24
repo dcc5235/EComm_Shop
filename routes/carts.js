@@ -1,5 +1,6 @@
 const express = require('express');
 const cartsRepo = require('../repositories/carts');
+const productsRepo = require('../repositories/products');
 
 const router = express.Router();
 
@@ -34,6 +35,10 @@ router.get('/cart', async (req, res) => {
   }
 
   const cart = await cartsRepo.getOne(req.session.cartId);
+
+  for (let item of cart.items) {
+    const product = await productsRepo.getOne(item.id);
+  }
 });
 
 // rcv post request to delete item from cart
