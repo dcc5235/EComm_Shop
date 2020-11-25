@@ -29,19 +29,23 @@ randomId | - | id | generates a random id
 writeAll | - | null | writes all user to a user.json file
 comparePasswords | string, string | boolean | returns true if the passwords match
 
-[Admin Users Sign Up](http://localhost:3000/signup)
-  - Run script <code>npm run dev</code> 
+**Admin Users Sign Up**: http://localhost:3000/signup
+  - Run script <code>npm run dev</code> to deploy
 
-## Products Repository
-Code reuse with classes - see repository.js
+## Products Repository Method
+- Reuse code from Admin Users Repository Method excluding the comparePasswords method
+  - See repository.js for code reuse with classes
 
 ## Requirements for SignUp & SignIn
 - Hashing and salting passwords for user security to prevent [rainbow table attacks](https://bit.ly/3lIGyXn)
 - Password validator & sanitization with [npm express-validator library](https://www.npmjs.com/package/express-validator)
 
-## Image and upload files
-- middleware [multer](https://www.npmjs.com/package/multer) installation (accessing uploaded files)
-  - <code> npm install multer</code> in the command line
+## Image and Upload Files
+- Middleware [multer](https://www.npmjs.com/package/multer) installation needed for accessing uploaded image files
+  - Run script <code> npm install multer</code> in the command line
 
-## Shopping cart
-- http://localhost:3000
+## Shopping Cart
+**Product List**: http://localhost:3000
+  - Run script <code>npm run dev</code> to deploy
+  - When buyers click on a product, they are redirected to their shopping cart
+  ![](https://bit.ly/378br1l)
