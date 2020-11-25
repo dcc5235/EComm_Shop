@@ -47,7 +47,9 @@ router.get('/cart', async (req, res) => {
 });
 
 router.post('/cart/products/delete', async (req, res) => {
-  console.log(req.body.itemId);
+  const { itemId } = req.body;
+  const cart = await cartsRepo.getOne(req.session.cartId);
+  
 });
 
 module.exports = router;
