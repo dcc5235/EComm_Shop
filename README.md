@@ -48,4 +48,4 @@ comparePasswords | string, string | boolean | returns true if the passwords matc
 **Product List**: http://localhost:3000
   - Run script <code>npm run dev</code> to deploy
   - When buyers click on a product, they are redirected to their shopping cart
-  ![](https://scontent.fdpa1-1.fna.fbcdn.net/v/t1.0-9/125030598_1259255217785650_1204365441301765412_n.jpg?_nc_cat=105&ccb=2&_nc_sid=0debeb&_nc_ohc=yMba_qJ8c0gAX-TnYQP&_nc_ht=scontent.fdpa1-1.fna&oh=d366eb0d80c4ac3d942dbf0b58f9e6bf&oe=601DEEC3)
+  ![](https://scontent.fdpa1-1.fna.fbcdn.net/v/t1.0-9/126867886_1267857883592050_1389238540960618538_n.jpg?_nc_cat=100&ccb=2&_nc_sid=0debeb&_nc_ohc=ngcabC3jsZAAX83U4Ax&_nc_ht=scontent.fdpa1-1.fna&oh=d5fea4796f416107f8f3daaaf1ab1468&oe=601C167E)
