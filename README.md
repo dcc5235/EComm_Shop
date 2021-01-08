@@ -4,7 +4,7 @@
 
 A responsive, application which utilizes JS to allow administrators to add, edit, and remove products from the site. It also allows users of the product site to add, remove, and view their cart total.
 
-![](https://bit.ly/37auFU0)
+![](https://scontent.fdpa1-1.fna.fbcdn.net/v/t1.0-9/127220379_1267840890260416_393458326415392942_o.jpg?_nc_cat=100&ccb=2&_nc_sid=0debeb&_nc_ohc=RE0aVnZY7tEAX_HKiD8&_nc_ht=scontent.fdpa1-1.fna&oh=0a3ff9ad6d0ad90c3e330c509c3e8c46&oe=601EE185)
 
 ---
 
@@ -48,4 +48,4 @@ comparePasswords | string, string | boolean | returns true if the passwords matc
 **Product List**: http://localhost:3000
   - Run script <code>npm run dev</code> to deploy
   - When buyers click on a product, they are redirected to their shopping cart
-  ![](https://bit.ly/378br1l)
+  ![](https://scontent.fdpa1-1.fna.fbcdn.net/v/t1.0-9/125030598_1259255217785650_1204365441301765412_n.jpg?_nc_cat=105&ccb=2&_nc_sid=0debeb&_nc_ohc=yMba_qJ8c0gAX-TnYQP&_nc_ht=scontent.fdpa1-1.fna&oh=d366eb0d80c4ac3d942dbf0b58f9e6bf&oe=601DEEC3)
